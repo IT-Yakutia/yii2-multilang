@@ -15,14 +15,19 @@ class Bootstrap implements BootstrapInterface{
 
         $app->setModule('multilang', 'ayaalkaplin\multilang\Module');
 
-        $app->set('request', [
-            'class' => \ayaalkaplin\multilang\components\LangRequest::class,
-            'csrfParam' => '_csrf',
-            'baseUrl' => '',
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ],
-            'cookieValidationKey' => md5('js234AS'),
-        ]);
+        $config = yii\helpers\ArrayHelper::merge(
+            require Yii::getAlias('@app').'/../common/config/main.php',
+            require Yii::getAlias('@app').'/../common/config/main-local.php',
+            require Yii::getAlias('@app').'/config/main.php',
+            require Yii::getAlias('@app').'/config/main-local.php'
+        );
+        
+        $pameters = yii\helpers\ArrayHelper::merge(
+            $config['components']['request'],
+            [
+                'class' => \ayaalkaplin\multilang\components\LangRequest::class,
+            ]
+        );
+        $app->set('request', $pameters);
     }
 }

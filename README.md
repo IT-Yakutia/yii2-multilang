@@ -25,7 +25,7 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Migrate
+Migrate:
 
 ```
 php yii migrate --migrationPath=@vendor/ayaalkaplin/yii2-multilang/src/migrations
@@ -34,4 +34,11 @@ php yii migrate --migrationPath=@vendor/ayaalkaplin/yii2-multilang/src/migration
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \ayaalkaplin\multilang\AutoloadExample::widget(); ?>```
+<?= \ayaalkaplin\multilang\widgets\lang\Change::widget(); ?>
+```
+
+For backend and it's require admin role:
+
+```php
+<?= Url::toRoute(['/multilang']); ?>
+```
