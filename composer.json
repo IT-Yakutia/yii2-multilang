@@ -13,9 +13,12 @@
     "require": {
         "yiisoft/yii2": "~2.0.0"
     },
+    "extra": {
+        "bootstrap": "ayaalkaplin\\multilang\\Bootstrap"
+    },
     "autoload": {
         "psr-4": {
-            "ayaalkaplin\\multilang\\": ""
+            "ayaalkaplin\\multilang\\": "src"
         }
     }
 }

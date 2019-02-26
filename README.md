@@ -25,6 +25,12 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
+Migrate
+
+```
+php yii migrate --migrationPath=@vendor/ayaalkaplin/yii2-multilang/src/migrations
+```
+
 Once the extension is installed, simply use it in your code by  :
 
 ```php
