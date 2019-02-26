@@ -22,12 +22,14 @@ class Bootstrap implements BootstrapInterface{
             require Yii::getAlias('@app').'/config/main-local.php'
         );
         
-        $pameters = yii\helpers\ArrayHelper::merge(
-            $config['components']['request'],
-            [
-                'class' => \ayaalkaplin\multilang\components\LangRequest::class,
-            ]
-        );
-        $app->set('request', $pameters);
+        if (!($app instanceof \yii\console\Application)){
+            $pameters = yii\helpers\ArrayHelper::merge(
+                $config['components']['request'],
+                [
+                    'class' => \ayaalkaplin\multilang\components\LangRequest::class,
+                ]
+            );
+            $app->set('request', $pameters);
+        }
     }
 }

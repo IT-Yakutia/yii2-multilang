@@ -37,8 +37,8 @@ Once the extension is installed, simply use it in your code by  :
 <?= \ayaalkaplin\multilang\widgets\lang\Change::widget(); ?>
 ```
 
-For backend add this URL & it's require admin role:
+For backend add this URL
 
 ```php
-<?= Url::toRoute(['/multilang']); ?>
+<?= Url::toRoute(['/multilang/back-lang/index']); ?>
 ```
