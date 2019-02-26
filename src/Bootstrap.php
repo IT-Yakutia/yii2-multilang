@@ -9,12 +9,6 @@ class Bootstrap implements BootstrapInterface{
 
     public function bootstrap($app)
     {
-        $app->getUrlManager()->addRules([
-            'multilang' => 'multilang/back-lang/index',
-        ], false);
-
-        $app->setModule('multilang', 'ayaalkaplin\multilang\Module');
-
         $config = yii\helpers\ArrayHelper::merge(
             require Yii::getAlias('@app').'/../common/config/main.php',
             require Yii::getAlias('@app').'/../common/config/main-local.php',
@@ -23,13 +17,17 @@ class Bootstrap implements BootstrapInterface{
         );
         
         if (!($app instanceof \yii\console\Application)){
-            $pameters = yii\helpers\ArrayHelper::merge(
+            $request_params = yii\helpers\ArrayHelper::merge(
                 $config['components']['request'],
-                [
-                    'class' => \ayaalkaplin\multilang\components\LangRequest::class,
-                ]
+                ['class' => \ayaalkaplin\multilang\components\LangRequest::class]
             );
-            $app->set('request', $pameters);
+            $app->set('request', $request_params);
         }
+
+        $app->setModule('multilang', 'ayaalkaplin\multilang\Module');
+        
+        $app->getUrlManager()->addRules([
+            'multilang' => 'multilang/back-lang/index',
+        ], false);
     }
 }

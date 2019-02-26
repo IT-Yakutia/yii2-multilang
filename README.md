@@ -25,6 +25,17 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
+Be sure that you have lines in urlManager config:
+
+```php
+'urlManager' => [
+    ******
+    'enablePrettyUrl' => true,
+    'showScriptName' => false,
+    ******
+]
+```
+
 Migrate:
 
 ```
