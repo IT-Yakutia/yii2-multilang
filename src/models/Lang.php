@@ -3,6 +3,7 @@
 namespace ayaalkaplin\multilang\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "ext_lang".
@@ -19,6 +20,13 @@ class Lang extends \yii\db\ActiveRecord
 {
     static $current = null;
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+    
     /**
      * {@inheritdoc}
      */
@@ -33,7 +41,7 @@ class Lang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['url', 'local', 'name', 'updated_at', 'created_at'], 'required'],
+            [['url', 'local', 'name'], 'required'],
             [['default', 'updated_at', 'created_at'], 'integer'],
             [['url', 'local', 'name'], 'string', 'max' => 255],
         ];
