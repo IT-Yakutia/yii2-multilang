@@ -25,7 +25,7 @@ class m190226_005223_create_lang_tbl extends Migration
         ], $tableOptions);
     
         $this->batchInsert('ext_lang', ['url', 'local', 'name', 'default', 'updated_at', 'created_at'], [
-            ['en', 'en-EN', 'English', 0, time(), time()],
+            ['en', 'en-US', 'English', 0, time(), time()],
             ['ru', 'ru-RU', 'Русский', 1, time(), time()],
         ]);
     }
